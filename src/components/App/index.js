@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "../Login";
-//import Register from "../Register";
-//import Wallet from "../Wallet";
-//import NewInput from "../NewInput";
-//import NewOutput from "../NewOutput";
+import Register from "../Register";
+import Wallet from "../Wallet";
+import NewCredit from "../NewCredit";
+import NewDebit from "../NewDebit";
 
 export default function App() {
 
@@ -12,14 +12,11 @@ export default function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/cadastro" element={<Register />} />
+                <Route path="/carteira" element={<Wallet />} />
+                <Route path="/nova-entrada" element={<NewCredit />} />
+                <Route path="/nova-saida" element={<NewDebit />} />
             </Routes>
         </BrowserRouter>
     );
 }
-
-/*
-    <Route path="/cadastro" element={<Register />} />
-    <Route path="/carteira" element={<Wallet />} />
-    <Route path="/nova-entrada" element={<NewInput />} />
-    <Route path="/nova-saida" element={<NewOutput />} />
-*/

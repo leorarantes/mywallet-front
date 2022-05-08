@@ -5,36 +5,47 @@ import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
 
-export default function Login() {
+export default function Register() {
     const navigate = useNavigate();
     const url = "http://localhost:5000/";
 
-    const [loading, setLoading] = useState("Entrar");
-    const [user, setUser] = useState({email: "", password: ""});
+    const [loading, setLoading] = useState("Cadastrar");
+    const [user, setUser] = useState({ email: "", name: "", password: "" });
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     function load() {
         setLoading(<ThreeDots color="#FFFFFF" height={50} width={50} />);
 
-        const loginRequisition = axios.post(url, user);
-        loginRequisition.then(response => {
-            const {id, name, email, password, token} = response.data;
-            localStorage.setItem("id", id);
-            localStorage.setItem("name", name);
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
-            localStorage.setItem("token", token);
-            
-            navigate('/carteira', { replace: true })
+        if(user.name === "" || user.email === "" || user.password === "" || confirmPassword === "") {
+            alert("Erro! Não podem haver campos vazios!");
+            setLoading("Cadastrar");
+            return;
+        } 
+
+        if(user.password !== confirmPassword) {
+            alert("Erro! A senha digitada no campo 'Confirme a senha' deve a mesma do campo 'Senha'!");
+            setLoading("Cadastrar");
+            return;
+        } 
+
+        const registerRequisition = axios.post(url, user);
+        registerRequisition.then(() => {
+            navigate('/', { replace: true })
         });
-        loginRequisition.catch(() => {
-            alert("Erro! Usuário ou senha inválidos!");
-            setLoading("Entrar");
-        });
+        registerRequisition.catch(() => {
+            alert("Erro! Não foi possível realizar seu cadastro, tente novamente mais tarde!");
+            setLoading("Cadastrar");
+        })
     }
 
     return (
-        <LoginBody>
+        <RegisterBody>
             <Logo>MyWallet</Logo>
+            <Input type="text" placeholder="Nome" value={user.name} onChange={e => {
+            const obj = {...user};
+            obj.name = e.target.value;
+            setUser({...obj});
+            }} />
             <Input type="text" placeholder="E-mail" value={user.email} onChange={e => {
             const obj = {...user};
             obj.email = e.target.value;
@@ -45,13 +56,17 @@ export default function Login() {
             obj.password = e.target.value;
             setUser({...obj});
             }} />
+            <Input type="password" placeholder="Confirme a senha" value={confirmPassword} onChange={e => {
+            const str = e.target.value;
+            setConfirmPassword(str);
+            }} />
             <Button onClick={() => load()}>{loading}</Button>
-            <Link to="/cadastro"><AlternativeLink>Primeira vez? Cadastre-se!</AlternativeLink></Link>
-        </LoginBody>
+            <Link to="/"><AlternativeLink>Já tem uma conta? Entre agora!</AlternativeLink></Link>
+        </RegisterBody>
     );
 }
 
-const LoginBody = styled.div`
+const RegisterBody = styled.div`
     width: 100vw;
     height: 100vh;
     background: #8C11BE;
