@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function Login() {
     const navigate = useNavigate();
-    const url = "http://localhost:5000/";
+    const url = "http://localhost:5000/sign-in";
 
     const [loading, setLoading] = useState("Entrar");
     const [user, setUser] = useState({email: "", password: ""});
@@ -17,8 +17,8 @@ export default function Login() {
 
         const loginRequisition = axios.post(url, user);
         loginRequisition.then(response => {
-            const {id, name, email, password, token} = response.data;
-            localStorage.setItem("id", id);
+            const {_id, name, email, password, token} = response.data;
+            localStorage.setItem("Id", _id);
             localStorage.setItem("name", name);
             localStorage.setItem("email", email);
             localStorage.setItem("password", password);

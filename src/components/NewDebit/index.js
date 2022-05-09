@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function NewDebit() {
     const navigate = useNavigate();
 
-    const url = "http://localhost:5000/";
+    const url = "http://localhost:5000/wallets";
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -28,7 +28,7 @@ export default function NewDebit() {
 
         const newDebitRequisition = axios.post(url, newDebit, config);
         newDebitRequisition.then(() => {
-            navigate('/', { replace: true })
+            navigate('/carteira', { replace: true })
         });
         newDebitRequisition.catch(() => {
             alert("Erro! Não foi possível salvar a saída, tente novamente mais tarde!");
@@ -44,12 +44,12 @@ export default function NewDebit() {
             <Input type="text" placeholder="Valor" value={newDebit.value} onChange={e => {
                 const obj = {...newDebit};
                 obj.value = e.target.value;
-                setNewDebit({...newDebit});
+                setNewDebit({...obj});
             }} />
             <Input type="text" placeholder="Descrição" value={newDebit.title} onChange={e => {
                 const obj = {...newDebit};
                 obj.title = e.target.value;
-                setNewDebit({...newDebit});
+                setNewDebit({...obj});
             }} />
             <Button onClick={() => load()}>{loading}</Button>
         </NewDebitBody>

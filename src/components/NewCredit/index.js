@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function NewCredit() {
     const navigate = useNavigate();
 
-    const url = "http://localhost:5000/";
+    const url = "http://localhost:5000/wallets";
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -28,7 +28,7 @@ export default function NewCredit() {
 
         const newCreditRequisition = axios.post(url, newCredit, config);
         newCreditRequisition.then(() => {
-            navigate('/', { replace: true })
+            navigate('/carteira', { replace: true })
         });
         newCreditRequisition.catch(() => {
             alert("Erro! Não foi possível salvar a entrada, tente novamente mais tarde!");
@@ -44,12 +44,12 @@ export default function NewCredit() {
             <Input type="text" placeholder="Valor" value={newCredit.value} onChange={e => {
                 const obj = {...newCredit};
                 obj.value = e.target.value;
-                setNewCredit({...newCredit});
+                setNewCredit({...obj});
             }} />
             <Input type="text" placeholder="Descrição" value={newCredit.title} onChange={e => {
                 const obj = {...newCredit};
                 obj.title = e.target.value;
-                setNewCredit({...newCredit});
+                setNewCredit({...obj});
             }} />
             <Button onClick={() => load()}>{loading}</Button>
         </NewCreditBody>

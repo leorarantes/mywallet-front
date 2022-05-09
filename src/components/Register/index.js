@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function Register() {
     const navigate = useNavigate();
-    const url = "http://localhost:5000/";
+    const url = "http://localhost:5000/sign-up";
 
     const [loading, setLoading] = useState("Cadastrar");
     const [user, setUser] = useState({ email: "", name: "", password: "" });

@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function Wallet() {
     const navigate = useNavigate();
 
-    const url = "http://localhost:5000/";
+    const url = "http://localhost:5000/wallets";
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -28,7 +28,8 @@ export default function Wallet() {
     let balance = 0;
     if(entriesArray.length > 0) {
         entriesArray.forEach(element => {
-            const {value, type} = element;
+            let {value, type} = element;
+            value = parseFloat(value);
             
             if(type === "credit") {
                 balance += value;
