@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function NewDebit() {
     const navigate = useNavigate();
 
-    const url = "https://git.heroku.com/project13-mywallet-back.git/wallets";
+    const url = "https://project13-mywallet-back.herokuapp.com/wallets";
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
