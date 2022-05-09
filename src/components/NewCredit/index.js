@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
+import dayjs from "dayjs";
 
 export default function NewCredit() {
     const navigate = useNavigate();
@@ -14,11 +15,11 @@ export default function NewCredit() {
         }
     }
 
-    const dateObj = new Date();
-    const day = dateObj.getDay();
-    const month = dateObj.getMonth();
-    const year = dateObj.getFullYear();
-    const date = `${day}/${month}/${year}`;
+    let day = dayjs().day();
+    day < 10 ? day = "0" + day : day = day.toString();
+    let month = dayjs().month();
+    month < 10 ? month = "0" + month : month = month.toString();
+    const date = day + "/" + month;
 
     const [newCredit, setNewCredit] = useState({date: date, value: "", title: "", type: "credit"});
     const [loading, setLoading] = useState("Salvar entrada");

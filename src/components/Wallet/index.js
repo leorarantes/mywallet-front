@@ -41,7 +41,7 @@ export default function Wallet() {
     }
 
     function exit() {
-        const exitRequisition = axios.post("https://project13-mywallet-back.herokuapp.com/sign-out", config);
+        const exitRequisition = axios.post("https://project13-mywallet-back.herokuapp.com/sign-out", null, config);
         exitRequisition.then(() => {
             navigate('/', { replace: true })
         });
