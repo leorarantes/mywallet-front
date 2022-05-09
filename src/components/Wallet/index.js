@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function Wallet() {
     const navigate = useNavigate();
 
-    const url = "http://localhost:5000/wallets";
+    const url = "https://git.heroku.com/project13-mywallet-back.git/wallets";
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -40,11 +40,21 @@ export default function Wallet() {
         });
     }
 
+    function exit() {
+        const exitRequisition = axios.post("https://git.heroku.com/project13-mywallet-back.git/sign-out", config);
+        exitRequisition.then(() => {
+            navigate('/', { replace: true })
+        });
+        exitRequisition.catch(() => {
+            alert("Erro ao sair da sessão!");
+        });
+    }
+
     return (
         <WalletBody>
             <Header>
                 <h1>Olá, {userName}</h1>
-                <ion-icon name="exit-outline"></ion-icon>
+                <ion-icon name="exit-outline" onClick={() => exit()}></ion-icon>
             </Header>
             {entriesArray.length > 0 ? 
                     <WalletBox>
