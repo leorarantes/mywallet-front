@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function Register() {
     const navigate = useNavigate();
-    const url = "https://project13-mywallet-back.herokuapp.com/sign-up";
+    const url = `${process.env.REACT_APP_BACK_END_URL}/sign-up`;
 
     const [loading, setLoading] = useState("Cadastrar");
     const [user, setUser] = useState({ email: "", name: "", password: "" });

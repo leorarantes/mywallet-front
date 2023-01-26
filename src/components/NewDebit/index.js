@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 export default function NewDebit() {
     const navigate = useNavigate();
 
-    const url = "https://project13-mywallet-back.herokuapp.com/wallets";
+    const url = `${process.env.REACT_APP_BACK_END_URL}/wallets`;
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`

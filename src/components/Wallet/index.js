@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function Wallet() {
     const navigate = useNavigate();
 
-    const url = "https://project13-mywallet-back.herokuapp.com/wallets";
+    const url = `${process.env.REACT_APP_BACK_END_URL}/wallets`;
     const config = {
         headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -41,7 +41,7 @@ export default function Wallet() {
     }
 
     function exit() {
-        const exitRequisition = axios.post("https://project13-mywallet-back.herokuapp.com/sign-out", null, config);
+        const exitRequisition = axios.post(`${process.env.REACT_APP_BACK_END_URL}/sign-out`, null, config);
         exitRequisition.then(() => {
             navigate('/', { replace: true })
         });

@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default function Login() {
     const navigate = useNavigate();
-    const url = "https://project13-mywallet-back.herokuapp.com/sign-in";
+    const url = `${process.env.REACT_APP_BACK_END_URL}/sign-in`;
 
     const [loading, setLoading] = useState("Entrar");
     const [user, setUser] = useState({email: "", password: ""});
