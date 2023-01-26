@@ -23,7 +23,7 @@ export default function Wallet() {
 			setEntriesArray([...response.data]);
 		});
         entriesRequisition.catch(e => alert("Erro!", e));
-    }, []);
+    }, [url]);
     
     let balance = 0;
     if(entriesArray.length > 0) {
@@ -60,11 +60,11 @@ export default function Wallet() {
                     <WalletBox>
                         <Entries>
                             {entriesArray.map(element => {
-                                const {date, title, value, type} = element;
+                                const {_id, date, title, value, type} = element;
                                 
                                 if(type === "credit") {
                                     return (
-                                        <Entry color="#03AC00">
+                                        <Entry key={_id} color="#03AC00">
                                             <h1>{date}</h1>
                                             <h1>{title}</h1>
                                             <h1>{value}</h1>
@@ -73,7 +73,7 @@ export default function Wallet() {
                                 }
                                 else {
                                     return (
-                                        <Entry color="#C70000">
+                                        <Entry key={_id} color="#C70000">
                                             <h1>{date}</h1>
                                             <h1>{title}</h1>
                                             <h1>{value}</h1>
@@ -107,8 +107,8 @@ export default function Wallet() {
 }
 
 const WalletBody = styled.div`
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: #8C11BE;
     display: flex;
     flex-direction: column;
@@ -117,13 +117,13 @@ const WalletBody = styled.div`
 `;
 
 const Header = styled.header`
-    width: 326px;
-    height: 31px;
+    width: 86.933333vw;
+    height: 4.6476761vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 25px;
-    margin-bottom: 22px;
+    margin-top: 3.748126vh;
+    margin-bottom: 3.298351vh;
 
     h1 {
         font-family: 'Raleway';
@@ -141,21 +141,21 @@ const Header = styled.header`
 `;
 
 const WalletBox = styled.div`
-    width: 326px;
-    height: 446px;
+    width: 86.933333vw;
+    height: 66.866566vh;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    margin-bottom: 13px;
+    margin-bottom: 1.9490254vh;
 `;
 
 const Entries = styled.div`
     box-sizing: border-box;
     width: 100%;
-    height: 406px;
+    height: 91.0313901%;
     overflow-y: scroll;
     padding-top: 10px;
 `;
@@ -232,17 +232,17 @@ const Text = styled.h1`
 `;
 
 const NewEntries = styled.div`
-    width: 326px;
-    height: 114px;
+    width: 86.933333vw;
+    height: 17.0914542vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 2.3988005vh;
 `;
 
 const NewEntryBox = styled.div`
     box-sizing: border-box;
-    width: 155px;
+    width: 47.5460122%;
     height: 100%;
     background: #A328D6;
     display: flex;

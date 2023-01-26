@@ -15,9 +15,9 @@ export default function NewCredit() {
         }
     }
 
-    let day = dayjs().day();
+    let day = dayjs().date();
     day < 10 ? day = "0" + day : day = day.toString();
-    let month = dayjs().month();
+    let month = dayjs().month()+1;
     month < 10 ? month = "0" + month : month = month.toString();
     const date = day + "/" + month;
 
@@ -68,8 +68,8 @@ const NewCreditBody = styled.div`
 `;
 
 const Header = styled.header`
-    width: 326px;
-    height: 31px;
+    width: 86.933333vw;
+    height: 4.6476761vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -88,7 +88,7 @@ const Header = styled.header`
 
 const Input = styled.input`
     box-sizing: border-box;
-    width: 326px;
+    width: 86.933333vw;
     height: 58px;
     background: #FFFFFF;
     display: flex;
@@ -115,7 +115,7 @@ const Input = styled.input`
 
 const Button = styled.button`
     box-sizing: border-box;
-    width: 326px;
+    width: 86.933333vw;
     height: 46px;
     background: #A328D6;
     display: flex;

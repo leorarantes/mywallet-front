@@ -87,7 +87,7 @@ const Logo = styled.h1`
 
 const Input = styled.input`
     box-sizing: border-box;
-    width: 326px;
+    width: 86.933333vw;
     height: 58px;
     background: #FFFFFF;
     display: flex;
@@ -114,7 +114,7 @@ const Input = styled.input`
 
 const Button = styled.button`
     box-sizing: border-box;
-    width: 326px;
+    width: 86.933333vw;
     height: 46px;
     background: #A328D6;
     display: flex;
