@@ -1,11 +1,11 @@
-# Drivenpass
+# My Wallet
 
 
 Front-end for My Wallet, a simple financial control app.
 
 ## 📋 About
 
-"My Wallet" is a financial control app that allows you to easily register your income and expenses. With it, you can keep track of your budget and control your finances.
+My Wallet is a financial control app that allows you to easily register your income and expenses. With it, you can keep track of your budget and control your finances.
 
 Deploy: https://projeto13-mywallet-front-lyart-tau.vercel.app/
 
