@@ -61,7 +61,7 @@ export default function Register() {
             setConfirmPassword(str);
             }} />
             <Button onClick={() => load()}>{loading}</Button>
-            <Link to="/"><AlternativeLink>Já tem uma conta? Entre agora!</AlternativeLink></Link>
+            <Link to="/" style={{textDecoration: "none"}}><AlternativeLink>Já tem uma conta? Entre agora!</AlternativeLink></Link>
         </RegisterBody>
     );
 }

@@ -46,7 +46,7 @@ export default function Login() {
             setUser({...obj});
             }} />
             <Button onClick={() => load()}>{loading}</Button>
-            <Link to="/cadastro"><AlternativeLink>Primeira vez? Cadastre-se!</AlternativeLink></Link>
+            <Link to="/cadastro" style={{textDecoration: "none"}}><AlternativeLink>Primeira vez? Cadastre-se!</AlternativeLink></Link>
         </LoginBody>
     );
 }
@@ -122,4 +122,5 @@ const AlternativeLink = styled.h1`
     line-height: 18px;
     color: #FFFFFF;
     text-align: center;
+    text-decoration: none;
 `;
